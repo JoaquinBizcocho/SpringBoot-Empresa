@@ -1,15 +1,13 @@
-
-package com.empresa.springboot;
+package com.empresa.springboot; // Asegúrate que este sea el paquete raíz
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication // Esto habilita la configuración automática y el escaneo de componentes
 public class SpringbootApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringbootApplication.class, args);
-		System.out.println("Hola Spring Boot");
-	}
-
+    public static void main(String[] args) {
+        // Este método es el punto de inicio de la aplicación Java estándar
+        SpringApplication.run(SpringbootApplication.class, args);
+    }
 }
