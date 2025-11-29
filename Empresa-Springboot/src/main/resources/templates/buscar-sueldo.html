@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar empleado</title>
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1>Buscar sueldo por DNI</h1>
+
+    <form th:action="@{/calcular-sueldo-dni}" method="get">
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" name="dni" required>
+        <input type="submit" value="Buscar">
+    </form>
+
+    <br/>
+
+    <div th:if="${empleado != null}">
+        <h2>Resultado de la búsqueda</h2>
+        <table border="1">
+            <tr>
+                <td>Dni</td>
+                <td>Sueldo Base</td>
+            </tr>
+            <tr>
+                <td th:text="${empleado.dni}"></td>
+                <td th:text="${sueldoBase}"></td>
+            </tr>
+        </table>
+    </div>
+    
+    <p th:if="${mensaje}" th:text="${mensaje}" style="color: red;"></p>
+
+    <br/>
+    <button type="button" onclick="window.location.href='/'">Volver</button>
+</body>
+</html>
