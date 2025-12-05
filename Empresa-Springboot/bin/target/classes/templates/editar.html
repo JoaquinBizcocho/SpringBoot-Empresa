@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar empleado</title>
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <h1>Editar empleado</h1>
+
+    <form th:action="@{/editar-empleado}" method="get">
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" name="dni" required>
+        <input type="submit" value="Buscar">
+    </form>
+
+    <br/>
+
+    <p th:if="${mensaje}" th:text="${mensaje}" style="color: red;"></p>
+
+    <div th:if="${empleado.dni != null and empleado.dni != ''}">
+        
+        <h2>Editar datos del empleado: <span th:text="${empleado.dni}"></span></h2>
+        
+        <form th:action="@{/guardar}" method="post">
+            
+            <table border="1">
+                <tr>
+                    <td>DNI</td>
+                    <td><input type="text" th:value="${empleado.dni}" readonly></td>
+                    <input type="hidden" name="dni" th:value="${empleado.dni}">
+                </tr>
+                <tr>
+                    <td>Nombre</td>
+                    <td><input type="text" name="nombre" th:value="${empleado.nombre}" required></td>
+                </tr>
+                <tr>
+                    <td>Sexo:</td>
+                    <td>
+                        <select name="sexo">
+                            <option value="M" th:selected="${empleado.sexo == 'M'}">M</option>
+                            <option value="F" th:selected="${empleado.sexo == 'F'}">F</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Categoria</td>
+                    <td><input type="number" name="categoria" th:value="${empleado.categoria}" required></td>
+                </tr>
+                <tr>
+                    <td>Anios trabajados</td>
+                    <td><input type="number" name="anios" th:value="${empleado.anios}" required></td>
+                </tr>
+            </table>
+            
+            <br>
+            <input type="submit" value="Guardar cambios">
+        </form>
+    </div>
+
+    <br/>
+    <button type="button" onclick="window.location.href='/'">Volver</button>
+</body>
+</html>
